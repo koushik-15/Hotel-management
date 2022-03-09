@@ -1,0 +1,12 @@
+USE test;
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1001","A",1);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1010","A",8);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1020","A",3);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1030","A",9);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1040","B",19);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1050","B",23);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1060","B",18);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1070","C",25);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1080","C",28);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1090","C",30);
+insert into bookings(bookstatus,custId,roomtype,roomId) values(TRUE,"1100","C",27);

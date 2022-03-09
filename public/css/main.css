@@ -1,0 +1,15 @@
+html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    background-color: #1976D2;
+  }
+  .uk-button-default {
+    background-color: white;
+    color: #1976D2;
+    border: 1px solid #e5e5e5;
+}
+.uk-input{
+    margin:10px;
+}

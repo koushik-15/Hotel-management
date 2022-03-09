@@ -1,0 +1,21 @@
+use test;
+INSERT INTO items (name, price) VALUES
+('roti', 10),
+('rice', 50),
+('paneer tikka', 140),
+('Malai Kofta', 100),
+('Paneer Biryani', 150),
+('Chicken Biryani', 200),
+('Tandoori Toti', 30),
+('Chicken Tikka', 210),
+('Paneer Masala', 150),
+('Dum Aloo', 140),
+('Masala Tea', 30),
+('Nescafe', 30),
+('Green Tea', 30),
+('Jeera Rice', 120),
+('Veg Thali', 150),
+('Fish Thali', 200),
+('Chicken Thali', 210),
+('Dum Biryani', 250),
+('Rumali Roti', 30);

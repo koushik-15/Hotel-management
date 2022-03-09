@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/uikit.min.css" />
+        <link rel='stylesheet' href="/css/main.css">
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/uikit-icons.min.js"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>
+    </head>
+    <body>
+        <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+            <div class="uk-navbar-left">
+        
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">HOTEL</a></li>
+                    <li>
+                        <a href="#">Dev</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="https://github.com/koushik_15/dbms-sql-project">GitHub</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                    <a href="/logout">LogOut</a>
+                    </li>
+                </ul>
+        
+            </div>
+        </nav>
+        <div class="uk-container">
+            <h1 style="color: white;">Welcome <%=user%></h1>
+            <div class="uk-margin">
+                <input id='Query'class="uk-input uk-form-success uk-form-width-large" type="text" placeholder="Enter a QUERY">
+                <button id='btn'class="uk-button uk-button-default" style="margin-left: 10px;">Excute</button>
+            </div>
+            <div id='data'></div>
+
+            <div id='tableGoesHere' style="color: white;"></div>
+        
+        </div>
+    </body>
+    <script>
+        $(document).ready(()=>{
+            const $ = jQuery.noConflict();
+            $('#btn').on('click',(e)=>{
+                $.post('/user',{sqlQuery:$('#Query').val()},(data=>{
+                    console.log(JSON.stringify(data));
+                    if(!data.rows){
+                        $('#data').text("");
+                        const defaultData = data;
+                    document.getElementById('tableGoesHere').innerHTML = json2table(defaultData, 'table');
+
+                    /* Live example */
+
+                    var dom = {
+                    data: document.getElementById('data'),
+                    table: document.getElementById('tableGoesHere'),
+                    };
+
+                    dom.data.value = JSON.stringify(defaultData);
+                    dom.data.addEventListener('input', function() {
+                    dom.table.innerHTML = json2table(JSON.parse(dom.data.value,'uk-table'), 'table');
+                    });
+                    }else{
+                        $('#data').text("OK");
+                        $('#data').css('color','white');
+                        $('#data').css('margin-left','20px');
+                    }
+                    
+                }))
+            })
+
+
+                    function json2table(json, classes) {
+                    var cols = Object.keys(json[0]);
+                    
+                    var headerRow = '';
+                    var bodyRows = '';
+                    
+                    classes = classes || '';
+
+                    function capitalizeFirstLetter(string) {
+                        return string.charAt(0).toUpperCase() + string.slice(1);
+                    }
+
+                    cols.map(function(col) {
+                        headerRow += '<th>' + capitalizeFirstLetter(col) + '</th>';
+                    });
+
+                    json.map(function(row) {
+                        bodyRows += '<tr>';
+
+                        cols.map(function(colName) {
+                        bodyRows += '<td>' + row[colName] + '</td>';
+                        })
+
+                        bodyRows += '</tr>';
+                    });
+
+                    return '<table style="border-spacing: 20px;"class="' +
+                            classes +
+                            '"><thead><tr>' +
+                            headerRow +
+                            '</tr></thead><tbody>' +
+                            bodyRows +
+                            '</tbody></table>';
+                    }
+
+                    /* How to use it */
+
+        })
+        
+    </script>
+</html>
