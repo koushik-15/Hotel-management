@@ -15,6 +15,6 @@ A simple Hotel Management Database Project as an academic project work.
 
 ### Sample Images
 -  LOGIN PAGE
-![Image 1](https://github.com/anurag0608/dbms-sql-project/blob/master/ss/1.png)
+![Image 1](https://github.com/koushik-15/Hotel-management/blob/main/ss/1.png)
 
 
